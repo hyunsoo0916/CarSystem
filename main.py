@@ -101,10 +101,7 @@ def execute_command_callback(command, car_controller):
 
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> add_TDD
 # 파일 경로를 입력받는 함수
 # -> 가급적 수정하지 마세요.
 #    테스트의 완전 자동화 등을 위한 추가 개선시에만 일부 수정이용하시면 됩니다. (성적 반영 X)
@@ -148,19 +145,6 @@ class TestCarController(unittest.TestCase):
     def setUp(self):
         # CarController 클래스의 인스턴스를 모킹합니다.
         self.car_controller = MagicMock()
-<<<<<<< HEAD
-    
-    def test_engine_stop_with_speed(self):
-        # 1번: 차량이 주행 중일 때 시동을 끌 수 없음
-        self.car_controller.get_engine_status = MagicMock(return_value=True)
-        self.car_controller.get_speed = MagicMock(return_value=10)
-
-        execute_command_callback("ENGINE_BTN", self.car_controller)
-        self.car_controller.toggle_engine.assert_not_called()
-
-    def test_engine_stop_without_speed(self):
-        # 2번: 차량이 정지 중일 때 시동을 끌 수 있음
-=======
 
     def test_01_engine_start_without_brake(self):
         # 1번: 브레이크를 밟지 않았을 때 시동을 걸 수 없도록 검증
@@ -195,68 +179,43 @@ class TestCarController(unittest.TestCase):
 
     def test_04_engine_stop_without_speed(self):
         # 4번: 차량이 정지 중일 때 시동을 끌 수 있음
->>>>>>> add_TDD
         self.car_controller.get_engine_status = MagicMock(return_value=True)
         self.car_controller.get_speed = MagicMock(return_value=0)
 
         execute_command_callback("ENGINE_BTN", self.car_controller)
         self.car_controller.toggle_engine.assert_called_once()
 
-<<<<<<< HEAD
-    def test_acceleration_when_engine_off(self):
-        # 3번: 엔진이 꺼져 있을 때 가속 불가
-=======
     def test_05_acceleration_when_engine_off(self):
         # 5번: 엔진이 꺼져 있을 때 가속 불가
->>>>>>> add_TDD
         self.car_controller.get_engine_status = MagicMock(return_value=False)
 
         execute_command_callback("ACCELERATE", self.car_controller)
         self.car_controller.accelerate.assert_not_called()
-<<<<<<< HEAD
-    
-    def test_acceleration_when_engine_on(self):
-        # 4번: 엔진이 켜져 있을 때 가속 가능
-=======
 
     def test_06_acceleration_when_engine_on(self):
         # 6번: 엔진이 켜져 있을 때 가속 가능
->>>>>>> add_TDD
         self.car_controller.get_engine_status = MagicMock(return_value=True)
 
         execute_command_callback("ACCELERATE", self.car_controller)
         self.car_controller.accelerate.assert_called_once()
 
-<<<<<<< HEAD
-    def test_lock_when_doors_open(self):
-        # 5번: 문이 열려 있을 때 차량 잠금 불가
-=======
     def test_07_lock_when_doors_open(self):
         # 7번: 문이 열려 있을 때 차량 잠금 불가
->>>>>>> add_TDD
         self.car_controller.get_left_door_status = MagicMock(return_value="OPEN")
         self.car_controller.get_right_door_status = MagicMock(return_value="CLOSED")
 
         execute_command_callback("LOCK", self.car_controller)
         self.car_controller.lock_vehicle.assert_not_called()
 
-<<<<<<< HEAD
-    def test_lock_when_doors_closed(self):
-        # 6번: 문이 닫혀 있을 때 차량 잠금 가능
-=======
     def test_08_lock_when_doors_closed(self):
         # 8번: 문이 닫혀 있을 때 차량 잠금 가능
->>>>>>> add_TDD
         self.car_controller.get_left_door_status = MagicMock(return_value="CLOSED")
         self.car_controller.get_right_door_status = MagicMock(return_value="CLOSED")
 
         execute_command_callback("LOCK", self.car_controller)
         self.car_controller.lock_vehicle.assert_called_once()
 
-<<<<<<< HEAD
-=======
 
->>>>>>> add_TDD
 
 if __name__ == "__main__":
     unittest.main()
